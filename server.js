@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+const alert = require('alert');
 const signin = require('./Controllers/signin');
 const register = require('./Controllers/register');
 const profile = require('./Controllers/profile');
