@@ -5,12 +5,17 @@ const app = new Clarifai.App({
 });
 
 const handleApiCall = (req, res) => {
-	app.models
-		.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-		.then(data => {
-			res.json(data);
-		})	
-		.catch(err => res.status(400).json('Unable to work with the API'))
+	const { imgUrl } = req.body;
+	if(imgUrl === '') {
+		res.status(400).json('The image url is empty');
+	} else {
+		app.models
+			.predict(Clarifai.FACE_DETECT_MODEL, imgUrl)
+			.then(data => {
+				res.json(data);
+			})	
+			.catch(err => res.status(400).json('Unable to work with the API'))
+	}
 }
 
 const handleImage = (req, res, db) => {
