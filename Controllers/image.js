@@ -7,7 +7,7 @@ const app = new Clarifai.App({
 const handleApiCall = (req, res) => {
 	const { imgUrl } = req.body;
 	if(imgUrl === '') {
-		res.status(400).json('The image url is empty');
+		res.status(400);
 	} else {
 		app.models
 			.predict(Clarifai.FACE_DETECT_MODEL, imgUrl)
