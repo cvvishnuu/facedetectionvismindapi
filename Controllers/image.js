@@ -5,12 +5,12 @@ const app = new Clarifai.App({
 });
 
 const handleApiCall = (req, res) => {
-	const { imgUrl } = req.body;
-	if(imgUrl === '') {
+	const { input } = req.body;
+	if(input === '') {
 		res.status(400);
 	} else {
 		app.models
-			.predict(Clarifai.FACE_DETECT_MODEL, imgUrl)
+			.predict(Clarifai.FACE_DETECT_MODEL, input)
 			.then(data => {
 				res.json(data);
 			})	
