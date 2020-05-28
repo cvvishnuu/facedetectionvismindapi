@@ -6,7 +6,7 @@ const app = new Clarifai.App({
 
 const handleApiCall = (req, res) => {
 	const { input } = req.body;
-	if(input === '') {
+	if(input.value === '') {
 		res.status(400);
 	} else {
 		app.models
